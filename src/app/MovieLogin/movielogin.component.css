@@ -1,0 +1,92 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+}
+.top-button-nav {
+    text-align: center;
+    font-size: 18px;
+}
+
+.top-button-nav>li {
+    display: inline-block;
+    padding: 1em 4em;
+    border: 2px solid black;
+    height: 2px;
+    vertical-align: middle;
+    line-height: 5px;
+
+}
+
+.top-button-nav>li>a {
+    margin-bottom: 5px;
+}
+.login-container-grid {
+    display: grid;
+    grid-template-rows: 1fr 13fr 1fr;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.r1,
+.r3 {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-column-gap: 1em;
+    background-color: #9bc1bc;
+}
+
+.logo-name {
+    line-height: 50px;
+    margin-left: 10px;
+    align-self: center;
+}
+
+.r2 {
+    display: grid;
+}
+
+.login-form {
+    justify-self: center;
+    align-self: center;
+    width: 450px;
+    height: 450px;
+    display: grid;
+    grid-template-rows: 5fr 1fr 1fr 1fr;
+    grid-row-gap: 15px;
+}
+
+.login-logo {
+    justify-self: center;
+
+}
+
+.login-form>img {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-login {
+    width: 80px;
+    justify-self: right;
+}
+
+.login-input {
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.r3-middle {
+align-self: center;
+justify-self: center;
+}

@@ -1,0 +1,140 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+  }
+
+  body,
+  html {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+}
+
+  .box-shadow {
+    -webkit-box-shadow: -1px 7px 23px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 7px 23px -10px rgba(0,0,0,0.75);
+    box-shadow: -1px 7px 23px -10px rgba(0,0,0,0.75);
+  }
+
+  .main-container-grid {
+    display: grid;
+    grid-template-rows: 1fr 13fr 1fr;
+    height: 100%;
+    grid-row-gap: 1em;
+  }
+
+  .r1,
+  .r3 {
+    display: grid;
+    background-color: #9BC1BC;
+    padding: 1em;
+    align-items: center;
+  }
+  .top-button-nav {
+    text-align: center;
+    font-size: 18px;
+    margin-left: 50px;
+    margin-top: -150px;
+    
+}
+
+.top-button-nav>li {
+    display: inline-block;
+    padding: 1em 5em;
+    border: 2px solid black;
+    height: 2px;
+    vertical-align: middle;
+    line-height: 5px;
+   
+
+}
+
+
+
+  .r3 {
+    text-align: center;
+  }
+
+  .r2 {
+    height: 100%;
+    background-color: #f1f1f1;
+  }
+
+  
+  .c1 {
+    min-width: 200px;
+  }
+  .c1, .c3 {
+    background-color: #f4f4f4;
+  }
+  .txt-center {
+    text-align: center;
+    margin: 15px auto 0px;
+    border-bottom: 1px solid #a8a7a7;
+    padding-bottom: 15px;
+  }
+  .left-nav {
+    list-style-type: none;
+  }
+  .left-nav > li > a {
+    display: block;
+    padding:15px 0px 15px 30px;
+    background-color: #f4f4f4;
+    font-weight: bold;
+    text-decoration: none;
+    transition-duration: 0.7s;
+    
+    
+    
+  }
+  .left-nav > li > a:hover {
+    background-color: #8d8c8c;
+  }
+  .c2 {
+    padding: 2em;
+    background-color: #f4f1bb;
+  }
+  .h2-content {
+    grid-column: 1 / 5;
+    height: 22px;
+    width: 100%;
+  }
+  .c2 > img {
+    width: 100%;
+    align-self: center;
+    max-height: 130px;
+  }
+
+  .contact-form {
+    width: 500px;
+    height: 500px;
+    margin: 100px auto;
+  }
+  .contact-input {
+    width: 91%;
+    padding: 15px;
+    margin: 5px;
+  }
+  .submit-button {
+    padding: 10px 25px;
+    background-color:#CCC;
+    float:right;
+    margin-top: 12px;
+  }
+  .business-logo {
+    height: 150px;
+    width: 150px;
+    
+    
+}
