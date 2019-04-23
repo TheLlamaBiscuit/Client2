@@ -37,7 +37,10 @@ a {
     color: black;
 }
 
-.r1,
+.r1 {
+    margin: 1px;
+    background-color: #CCC;
+}
 .r3 {
     display: grid;
     grid-template-columns: 1fr 5fr 1fr;
