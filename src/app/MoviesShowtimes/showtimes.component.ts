@@ -14,8 +14,8 @@ export interface IBike {
 
 @Component({
   selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  templateUrl: './showtimes.component.html',
+  styleUrls: ['./showtimes.component.css']
 })
 export class CartComponent implements OnInit {
 
@@ -37,15 +37,15 @@ export class CartComponent implements OnInit {
   }
 
   async refresh() {
-    this.cars = await this.getCars('car')
+    this.cars = await this.getMovie('Movie')
   }
   // getCars('car');
-  async getCars(path: string) {
+  async getMovie(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getCars()', resp);
+    console.log('resp from getMovie()', resp);
     return resp;
   }
-  async createCar() {
+  async createMovie() {
     const car = {
       make: null,
       model: null,
@@ -62,7 +62,7 @@ export class CartComponent implements OnInit {
 
   }
 
-  async updateCar(car: any) {
+  async updateMovie(car: any) {
     console.log('from updateCar car: ', car);
     const resp = await this.http.put(`car/id${car.id}`, car);
     if (resp) {
@@ -71,7 +71,7 @@ export class CartComponent implements OnInit {
     return resp;
 
   }
-  async removeCar(car: any, index: number) {
+  async removeMovie(car: any, index: number) {
     console.log('remove car...', index);
     this.cars.splice(index, 1);
   }
