@@ -6,7 +6,7 @@ import { HttpService } from '../../shared-service/http.service';
 
 export interface IBike {
   id?: number;
-  image: string;
+  image_url: string;
   price: number;
   quantity: number;
   description: string;

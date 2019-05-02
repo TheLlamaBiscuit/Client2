@@ -64,7 +64,7 @@ export class DataComponent implements OnInit {
   }
 
   async updateMovie(Movie: any) {
-    console.log('from updateMovie Movie: ', car);
+    // console.log('from updateMovie Movie: ', car);
     const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
     if (resp) {
       this.toastService.showToast('success', 3000, 'Movie successfully saved');

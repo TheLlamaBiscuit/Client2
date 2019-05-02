@@ -13,11 +13,11 @@ export interface IMovie {
 }
 
 @Component({
-  selector: 'app-moviedata',
-  templateUrl: './data.component.html',
-  styleUrls: ['./data.component.css']
+  selector: 'app-concessionsdata',
+  templateUrl: './cd.component.html',
+  styleUrls: ['./cd.component.css']
 })
-export class DataComponent implements OnInit {
+export class ConcessionsComponent implements OnInit {
 
   bikes: Array<IMovie> = [];
   myName = '';
@@ -64,7 +64,7 @@ export class DataComponent implements OnInit {
   }
 
   async updateMovie(Movie: any) {
-    console.log('from updateMovie Movie: ', car);
+    // console.log('from updateMovie Movie: ', car);
     const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
     if (resp) {
       this.toastService.showToast('success', 3000, 'Movie successfully saved');

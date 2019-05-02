@@ -22,43 +22,34 @@
 
 <div class="contact-grid">
   <div class="gallery-grid">
-    <mat-card class="example-card" *ngFor="let Employee of employees; let i = index">
+    <mat-card class="example-card" *ngFor="let employee of employees; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg"
+          [src]="'https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg'"
           alt="Site Views">
         <p>
-          <label for="img">Image Url:</label>
-          <input [(ngModel)]="Employee.image_url" disabled type="text" class="form-control" placeholder="Image" aria-label="Image">
+          <label for="id">ID:</label>
+          <input [(ngModel)]="employee.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
         </p>
         <p>
-          <label for="emp-id">ID:</label>
-          <input [(ngModel)]="Employee.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
-        </p>
-        <p>
-          <label for="First-Name">First Name:</label>
-          <input [(ngModel)]="Employee.First-Name" type="text" class="form-control" placeholder="First Name" aria-label="First Name"
+          <label for="first_name">First Name:</label>
+          <input [(ngModel)]="employee.first_name" type="text" class="form-control" placeholder="First Name" aria-label="First Name"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Last-Name">Last Name:</label>
-          <input [(ngModel)]="Employee.Last-Name" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name"
+          <label for="last_name">Last Name:</label>
+          <input [(ngModel)]="employee.last_name" type="text" class="form-control" placeholder="Last Name" aria-label="Last Name"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Emp-Type">Employee Type:</label>
-          <input [(ngModel)]="Employee.Emp-Type" type="text" class="form-control" placeholder="Employee Type"
-            aria-label="Emp-Type" aria-describedby="basic-addon1">
-        </p>
-        <p>
-          <label for="Publisher">Publisher</label>
-          <input [(ngModel)]="Movie.Publisher" type="text" class="form-control" placeholder="Publisher" aria-label="Publisher"
-            aria-describedby="basic-addon1">
+          <label for="emp_type">Employee Type:</label>
+          <input [(ngModel)]="employee.emp_type" type="text" class="form-control" placeholder="Employee Type"
+            aria-label="emp_type" aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
-          <button mat-raised-button color="primary" class="pull-right" (click)="updateEmployee(Employee)">Save</button>
+          <button mat-raised-button color="primary" class="pull-right" (click)="updateEmployee(employee)">Save</button>
           <button mat-raised-button color="warn">Remove From Cart</button>
         </div>
       </mat-card-actions>

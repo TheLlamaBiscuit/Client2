@@ -4,24 +4,24 @@ import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
 import { HttpService } from '../../shared-service/http.service';
 
-export interface IMovie {
+export interface IEmployee {
   id?: number;
-  image: string;
-  price: number;
-  quantity: number;
-  description: string;
+  first_name: string;
+  last_name: string;
+  emp_type: string;
 }
 
 @Component({
-  selector: 'app-moviedata',
-  templateUrl: './data.component.html',
-  styleUrls: ['./data.component.css']
+  selector: 'app-employeedata',
+  templateUrl: './ed.component.html',
+  styleUrls: ['./ed.component.css']
 })
-export class DataComponent implements OnInit {
 
-  bikes: Array<IMovie> = [];
+export class EmployeeComponent implements OnInit {
+
+  bikes: Array<IEmployee> = [];
   myName = '';
-  cars = [];
+  employees = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -31,50 +31,49 @@ export class DataComponent implements OnInit {
 
   async ngOnInit() {
     this.refresh();
-    //this.createCar('car', {make: 'Tesla', model: 'X'});
-    //this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
+    // this.createCar('car', {make: 'Tesla', model: 'X'});
+    // this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
 
   }
 
   async refresh() {
-    this.cars = await this.getMovie('Movie')
+    this.employees = await this.getEmployee('employee');
   }
   // getCars('car');
-  async getMovie(path: string) {
+  async getEmployee(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getMovie()', resp);
+    console.log('resp from getEmployee()', resp);
     return resp;
   }
-  async createMovie() {
-    const Movie = {
-      Title: null,
-      Genre: null,
-      Length: null,
-      Publisher: null
+  async createEmployee() {
+    const employee = {
+      first_name: null,
+      last_name: null,
+      emp_type: null
     };
-    const resp = await this.http.post('Movie', Movie);
-    console.log('from createMovie resp:', resp);
+    const resp = await this.http.post('employee', employee);
+    console.log('from createEmployee resp:', resp);
     if (resp) {
-      this.cars.unshift(resp);
+      this.employees.unshift(resp);
     } else {
-      this.toastService.showToast('danger', 3000, 'Movie create failed!');
+      this.toastService.showToast('danger', 3000, 'Employee create failed!');
     }
     return resp;
 
   }
 
-  async updateMovie(Movie: any) {
-    console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
+  async updateEmployee(employee: any) {
+    // console.log('from updateMovie Movie: ', car);
+    const resp = await this.http.put(`employee/id${employee.id}`, employee);
     if (resp) {
-      this.toastService.showToast('success', 3000, 'Movie successfully saved');
+      this.toastService.showToast('success', 3000, 'Employee successfully saved');
     }
     return resp;
 
   }
-  async removeMovie(Movie: any, index: number) {
-    console.log('remove Movie...', index);
-    this.cars.splice(index, 1);
+  async removeEmployee(employee: any, index: number) {
+    console.log('remove Employee...', index);
+    this.employees.splice(index, 1);
   }
 
 

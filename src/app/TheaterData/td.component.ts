@@ -13,15 +13,15 @@ export interface IMovie {
 }
 
 @Component({
-  selector: 'app-moviedata',
-  templateUrl: './data.component.html',
-  styleUrls: ['./data.component.css']
+  selector: 'app-theaterdata',
+  templateUrl: './td.component.html',
+  styleUrls: ['./td.component.css']
 })
-export class DataComponent implements OnInit {
+export class TheaterComponent implements OnInit {
 
   bikes: Array<IMovie> = [];
   myName = '';
-  cars = [];
+  theaters = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -31,50 +31,50 @@ export class DataComponent implements OnInit {
 
   async ngOnInit() {
     this.refresh();
-    //this.createCar('car', {make: 'Tesla', model: 'X'});
-    //this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
+    // this.createCar('car', {make: 'Tesla', model: 'X'});
+    // this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
 
   }
 
   async refresh() {
-    this.cars = await this.getMovie('Movie')
+    this.theaters = await this.getTheater('Theater')
   }
   // getCars('car');
-  async getMovie(path: string) {
+  async getTheater(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getMovie()', resp);
+    console.log('resp from getTheater()', resp);
     return resp;
   }
-  async createMovie() {
-    const Movie = {
+  async createTheater() {
+    const Theater = {
       Title: null,
       Genre: null,
       Length: null,
       Publisher: null
     };
-    const resp = await this.http.post('Movie', Movie);
-    console.log('from createMovie resp:', resp);
+    const resp = await this.http.post('Theater', Theater);
+    console.log('from createTheater resp:', resp);
     if (resp) {
-      this.cars.unshift(resp);
+      this.theaters.unshift(resp);
     } else {
-      this.toastService.showToast('danger', 3000, 'Movie create failed!');
+      this.toastService.showToast('danger', 3000, 'Theater create failed!');
     }
     return resp;
 
   }
 
-  async updateMovie(Movie: any) {
-    console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
+  async updateTheater(Theater: any) {
+    // console.log('from updateMovie Movie: ', car);
+    const resp = await this.http.put(`Theater/id${Theater.id}`, Theater);
     if (resp) {
-      this.toastService.showToast('success', 3000, 'Movie successfully saved');
+      this.toastService.showToast('success', 3000, 'Theater successfully saved');
     }
     return resp;
 
   }
-  async removeMovie(Movie: any, index: number) {
-    console.log('remove Movie...', index);
-    this.cars.splice(index, 1);
+  async removeTheater(Theater: any, index: number) {
+    console.log('remove Theater...', index);
+    this.theaters.splice(index, 1);
   }
 
 
