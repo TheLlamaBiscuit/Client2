@@ -38,8 +38,8 @@ export class HttpService {
 
   }
   async delete(path: string) {
-    const resp = await this.http.delete(path);
-
+    const resp = await this.http.delete(this.apiURL + path, this.headers).toPromise();
+    return resp.json();
   }
 
   get headers() {

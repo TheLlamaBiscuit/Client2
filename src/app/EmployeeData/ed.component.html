@@ -7,16 +7,16 @@
     <button mat-raised-button color="primary" (click)='createEmployee()'>Add New Employee</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../ConcessionData/cd.component.html'" mat-raised-button color="primary">Add Concession</button>
+    <button routerLink="/concessions" routerLinkActive="active" mat-raised-button color="primary">Add Concession</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../TheaterData/td.component.html'" mat-raised-button color="primary">Add Theater</button>
+    <button routerLink="/theater" routerLinkActive="active" mat-raised-button color="primary">Add Theater</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../MovieData/data.component.html'" mat-raised-button color="primary">Add Movie</button>
+    <button routerLink="/movie" routerLinkActive="active" mat-raised-button color="primary">Add Movie</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../Welcome/welcome.component.html'" mat-raised-button color="primary">Checkout</button>
+    <button onclick="window.location.href='./src/app/Welcome/welcome.component.html'" mat-raised-button color="primary">Finish</button>
   </li>
 </ul>
 
@@ -25,7 +25,7 @@
     <mat-card class="example-card" *ngFor="let employee of employees; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="'https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg'"
+          [src]="employee.emp_URL"
           alt="Site Views">
         <p>
           <label for="id">ID:</label>
@@ -46,11 +46,16 @@
           <input [(ngModel)]="employee.emp_type" type="text" class="form-control" placeholder="Employee Type"
             aria-label="emp_type" aria-describedby="basic-addon1">
         </p>
+        <p>
+          <label for="emp_URL">Employee URL:</label>
+          <input [(ngModel)]="employee.emp_URL" type="text" class="form-control" placeholder="Employee URL"
+            aria-label="emp_URL" aria-describedby="basic-addon1">
+        </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
           <button mat-raised-button color="primary" class="pull-right" (click)="updateEmployee(employee)">Save</button>
-          <button mat-raised-button color="warn">Remove From Cart</button>
+          <button mat-raised-button color="warn" (click)="removeEmployee(employee, i)">Delete</button>
         </div>
       </mat-card-actions>
     </mat-card>

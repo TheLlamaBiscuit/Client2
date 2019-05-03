@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
 import { HttpService } from '../../shared-service/http.service';
 
-export interface IMovie {
+export interface IConcession {
   id?: number;
-  image: string;
-  price: number;
-  quantity: number;
+  name: string;
   description: string;
+  price: string;
+  concession_type: string;
+  snack_URL: string;
 }
 
 @Component({
@@ -19,9 +20,9 @@ export interface IMovie {
 })
 export class ConcessionsComponent implements OnInit {
 
-  bikes: Array<IMovie> = [];
+  concession: Array<IConcession> = [];
   myName = '';
-  cars = [];
+  concessions = [];
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -31,50 +32,49 @@ export class ConcessionsComponent implements OnInit {
 
   async ngOnInit() {
     this.refresh();
-    //this.createCar('car', {make: 'Tesla', model: 'X'});
-    //this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
-
   }
 
   async refresh() {
-    this.cars = await this.getMovie('Movie')
+    this.concessions = await this.getConcession('concession');
   }
-  // getCars('car');
-  async getMovie(path: string) {
+  async getConcession(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getMovie()', resp);
+    console.log('resp from getConcession()', resp);
     return resp;
   }
-  async createMovie() {
-    const Movie = {
-      Title: null,
-      Genre: null,
-      Length: null,
-      Publisher: null
+  async createConcession() {
+    const concession = {
+      name: null,
+      description: null,
+      price: null,
+      concession_type: null,
+      snack_URL: null
     };
-    const resp = await this.http.post('Movie', Movie);
-    console.log('from createMovie resp:', resp);
+    const resp = await this.http.post('concession', concession);
     if (resp) {
-      this.cars.unshift(resp);
+      this.concessions.unshift(resp);
     } else {
-      this.toastService.showToast('danger', 3000, 'Movie create failed!');
+      this.toastService.showToast('danger', 3000, 'Movie creation failed!');
     }
     return resp;
 
   }
 
-  async updateMovie(Movie: any) {
-    // console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
+  async updateConcession(concession: any) {
+    const resp = await this.http.put(`concession/id/${concession.id}`, concession);
     if (resp) {
-      this.toastService.showToast('success', 3000, 'Movie successfully saved');
+      this.toastService.showToast('success', 3000, 'Successfully saved concession!');
     }
     return resp;
 
   }
-  async removeMovie(Movie: any, index: number) {
-    console.log('remove Movie...', index);
-    this.cars.splice(index, 1);
+  async removeConcession(concession: any, index: number) {
+    const resp = await this.http.delete(`concession/id/${concession.id}`);
+    if (resp) {
+      this.refresh();
+    } else {
+      this.toastService.showToast('danger', 3000, 'Failed to delete concession!');
+    }
   }
 
 

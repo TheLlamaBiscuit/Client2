@@ -18,6 +18,15 @@ import { EmployeeComponent } from './EmployeeData/ed.component';
 import { DataComponent } from './MovieData/data.component';
 import { TheaterComponent } from './TheaterData/td.component';
 import { ConcessionsComponent } from './ConcessionData/cd.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: 'employee', component: EmployeeComponent},
+  { path: 'movie', component: DataComponent},
+  { path: 'theater', component: TheaterComponent},
+  { path: 'concessions', component: ConcessionsComponent},
+  { path: 'login', component: LoginComponent},
+];
 
 @NgModule({
   declarations: [
@@ -32,6 +41,10 @@ import { ConcessionsComponent } from './ConcessionData/cd.component';
     ConcessionsComponent,
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes ,
+      { enableTracing: true}
+    ),
     BrowserModule,
     FormsModule,
     ToastModule,

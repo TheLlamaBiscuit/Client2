@@ -19,7 +19,7 @@ export interface IMovie {
 })
 export class DataComponent implements OnInit {
 
-  bikes: Array<IMovie> = [];
+  movies: Array<IMovie> = [];
   myName = '';
   cars = [];
   constructor(
@@ -30,19 +30,15 @@ export class DataComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.refresh();
-    //this.createCar('car', {make: 'Tesla', model: 'X'});
-    //this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
-
+    await this.refresh();
   }
 
   async refresh() {
-    this.cars = await this.getMovie('Movie')
+    this.movies = await this.getMovie('Movie');
   }
   // getCars('car');
   async getMovie(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getMovie()', resp);
     return resp;
   }
   async createMovie() {
@@ -53,28 +49,30 @@ export class DataComponent implements OnInit {
       Publisher: null
     };
     const resp = await this.http.post('Movie', Movie);
-    console.log('from createMovie resp:', resp);
     if (resp) {
-      this.cars.unshift(resp);
+      this.movies.unshift(resp);
     } else {
-      this.toastService.showToast('danger', 3000, 'Movie create failed!');
+      this.toastService.showToast('danger', 3000, 'Movie creation failed!');
     }
     return resp;
 
   }
 
   async updateMovie(Movie: any) {
-    // console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`Movie/id${Movie.id}`, Movie);
+    const resp = await this.http.put(`Movie/id/${Movie.id}`, Movie);
     if (resp) {
-      this.toastService.showToast('success', 3000, 'Movie successfully saved');
+      this.toastService.showToast('success', 3000, 'Successfully saved movie!');
     }
     return resp;
 
   }
   async removeMovie(Movie: any, index: number) {
-    console.log('remove Movie...', index);
-    this.cars.splice(index, 1);
+    const resp = await this.http.delete(`movie/id/${Movie.id}`);
+    if (resp) {
+      this.refresh();
+    } else {
+      this.toastService.showToast('danger', 3000, 'Failed to delete movie!');
+    }
   }
 
 

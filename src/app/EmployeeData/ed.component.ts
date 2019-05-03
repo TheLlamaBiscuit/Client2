@@ -49,7 +49,8 @@ export class EmployeeComponent implements OnInit {
     const employee = {
       first_name: null,
       last_name: null,
-      emp_type: null
+      emp_type: null,
+      emp_URL: null,
     };
     const resp = await this.http.post('employee', employee);
     console.log('from createEmployee resp:', resp);
@@ -63,8 +64,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   async updateEmployee(employee: any) {
-    // console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`employee/id${employee.id}`, employee);
+    // console.log('from updateEmployee employee: ', employee);
+    const resp = await this.http.put(`employee/id/${employee.id}`, employee);
     if (resp) {
       this.toastService.showToast('success', 3000, 'Employee successfully saved');
     }
@@ -72,8 +73,12 @@ export class EmployeeComponent implements OnInit {
 
   }
   async removeEmployee(employee: any, index: number) {
-    console.log('remove Employee...', index);
-    this.employees.splice(index, 1);
+    const resp = await this.http.delete(`employee/id/${employee.id}`);
+    if (resp) {
+      this.refresh();
+    } else {
+      this.toastService.showToast('danger', 3000, 'Delete employee failed');
+    }
   }
 
 

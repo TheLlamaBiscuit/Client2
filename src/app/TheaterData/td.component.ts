@@ -6,10 +6,10 @@ import { HttpService } from '../../shared-service/http.service';
 
 export interface IMovie {
   id?: number;
-  image: string;
-  price: number;
-  quantity: number;
-  description: string;
+  location: string;
+  theater_type: string;
+  number_of_rooms: number;
+  number_of_employees: string;
 }
 
 @Component({
@@ -19,7 +19,7 @@ export interface IMovie {
 })
 export class TheaterComponent implements OnInit {
 
-  bikes: Array<IMovie> = [];
+  theater: Array<IMovie> = [];
   myName = '';
   theaters = [];
   constructor(
@@ -31,50 +31,50 @@ export class TheaterComponent implements OnInit {
 
   async ngOnInit() {
     this.refresh();
-    // this.createCar('car', {make: 'Tesla', model: 'X'});
-    // this.updateCar('car/id/1', { make: 'Ford', model: 'Taurus' });
-
   }
 
   async refresh() {
-    this.theaters = await this.getTheater('Theater')
+    this.theaters = await this.getTheater('theater');
   }
-  // getCars('car');
+  // getTheater('theater');
   async getTheater(path: string) {
     const resp = await this.http.get(path);
-    console.log('resp from getTheater()', resp);
     return resp;
   }
   async createTheater() {
-    const Theater = {
-      Title: null,
-      Genre: null,
-      Length: null,
-      Publisher: null
+    const theater = {
+      name: null,
+      location: null,
+      theater_type: null,
+      number_of_rooms: null,
+      number_of_employees: null,
+      theater_URL: null,
     };
-    const resp = await this.http.post('Theater', Theater);
-    console.log('from createTheater resp:', resp);
+    const resp = await this.http.post('theater', theater);
     if (resp) {
       this.theaters.unshift(resp);
     } else {
-      this.toastService.showToast('danger', 3000, 'Theater create failed!');
+      this.toastService.showToast('danger', 3000, 'Theater creation failed!');
     }
     return resp;
 
   }
 
-  async updateTheater(Theater: any) {
-    // console.log('from updateMovie Movie: ', car);
-    const resp = await this.http.put(`Theater/id${Theater.id}`, Theater);
+  async updateTheater(theater: any) {
+    const resp = await this.http.put(`theater/id/${theater.id}`, theater);
     if (resp) {
-      this.toastService.showToast('success', 3000, 'Theater successfully saved');
+      this.toastService.showToast('success', 3000, 'Sucessfullly saved theater!');
     }
     return resp;
 
   }
-  async removeTheater(Theater: any, index: number) {
-    console.log('remove Theater...', index);
-    this.theaters.splice(index, 1);
+  async removeTheater(theater: any, index: number) {
+    const resp = await this.http.delete(`theater/id/${theater.id}`);
+    if (resp) {
+      this.refresh();
+    } else {
+      this.toastService.showToast('danger', 3000, 'Failed to delete theater!');
+    }
   }
 
 

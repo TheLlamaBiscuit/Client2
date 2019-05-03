@@ -7,59 +7,60 @@
     <button mat-raised-button color="primary" (click)='createConcession()'>Add Snacks</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../MovieData/data.component.html'" mat-raised-button color="primary">Add Movie</button>
+    <button routerLink="/movie" routerLinkActive="active" mat-raised-button color="primary">Add Movie</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../TheaterData/td.component.html'" mat-raised-button color="primary">Add Theater</button>
+    <button routerLink="/theater" routerLinkActive="active" mat-raised-button color="primary">Add Theater</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../EmployeeData/ed.component.html'" mat-raised-button color="primary">Add Employee</button>
+    <button routerLink="/employee" routerLinkActive="active" mat-raised-button color="primary">Add Employee</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../Welcome/welcome.component.html'" mat-raised-button color="primary">Checkout</button>
+    <button onclick="window.location.href='./src/app/Welcome/welcome.component.html'" mat-raised-button color="primary">Finish</button>
   </li>
 </ul>
 
 <div class="contact-grid">
   <div class="gallery-grid">
-    <mat-card class="example-card" *ngFor="let Concession of concessions; let i = index">
+    <mat-card class="example-card" *ngFor="let concession of concessions; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="'https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg'"
-          alt="Site Views">
+          [src]="concession.snack_URL"
+          alt="Snack Image">
         <p>
-          <label for="img">Image Url:</label>
-          <input [(ngModel)]="Concession.image_url" disabled type="text" class="form-control" placeholder="Image" aria-label="Image">
+          <label for="id">ID:</label>
+          <input [(ngModel)]="concession.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
         </p>
         <p>
-          <label for="id">Snack ID:</label>
-          <input [(ngModel)]="Concession.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
-        </p>
-        <p>
-          <label for="Snack-Type">Type:</label>
-          <input [(ngModel)]="Concession.Snack-Type" type="text" class="form-control" placeholder="Type" aria-label="Type"
+          <label for="name">Name:</label>
+          <input [(ngModel)]="concession.name" type="text" class="form-control" placeholder="Name" aria-label="concession.name"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Price">Price:</label>
-          <input [(ngModel)]="Concession.Price" type="text" class="form-control" placeholder="Price" aria-label="Price"
+          <label for="description">Description:</label>
+          <input [(ngModel)]="concession.description" type="text" class="form-control" placeholder="Description" aria-label="concession.description"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Length">Length:</label>
-          <input [(ngModel)]="Movie.Length" type="text" class="form-control" placeholder="Length"
-            aria-label="desc" aria-describedby="basic-addon1">
+          <label for="price">Price:</label>
+          <input [(ngModel)]="concession.price" type="text" class="form-control" placeholder="Price"
+            aria-label="concession.price" aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Publisher">Publisher</label>
-          <input [(ngModel)]="Movie.Publisher" type="text" class="form-control" placeholder="Publisher" aria-label="Publisher"
+          <label for="concession_type">Type</label>
+          <input [(ngModel)]="concession.concession_type" type="text" class="form-control" placeholder="Concession Type" aria-label="concession.concession_type"
+            aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="snack_URL">Snack Image</label>
+          <input [(ngModel)]="concession.snack_URL" type="text" class="form-control" placeholder="Snack URL" aria-label="concession.snack_URL"
             aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
-          <button mat-raised-button color="primary" class="pull-right" (click)="updateConcession(Concession)">Save</button>
-          <button mat-raised-button color="warn">Remove From Cart</button>
+          <button mat-raised-button color="primary" class="pull-right" (click)="updateConcession(concession)">Save</button>
+          <button mat-raised-button color="warn" (click)="removeConcession">Delete</button>
         </div>
       </mat-card-actions>
     </mat-card>

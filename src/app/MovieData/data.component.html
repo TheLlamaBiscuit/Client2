@@ -7,59 +7,60 @@
     <button mat-raised-button color="primary" (click)='createMovie()'>Add New Movie</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='./src/app/ConcessionData/cd.component.html'" mat-raised-button color="primary">Add Concession</button>
+    <button routerLink="/concessions" routerLinkActive="active" mat-raised-button color="primary">Add Concession</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='./src/app/TheaterData/td.component.html'" mat-raised-button color="primary">Add Theater</button>
+    <button routerLink="/theater" routerLinkActive="active" mat-raised-button color="primary">Add Theater</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='./src/app/EmployeeData/ed.component.html'" mat-raised-button color="primary">Add Employee</button>
+    <button routerLink="/employee" routerLinkActive="active" mat-raised-button color="primary">Add Employee</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../Welcome/welcome.component.html'" mat-raised-button color="primary">Checkout</button>
+    <button onclick="window.location.href='./src/app/Welcome/welcome.component.html'" mat-raised-button color="primary">Finish</button>
   </li>
 </ul>
 
 <div class="contact-grid">
   <div class="gallery-grid">
-    <mat-card class="example-card" *ngFor="let Movie of movies; let i = index">
+    <mat-card class="example-card" *ngFor="let movie of movies; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="'https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg'"
+          [src]="movie.poster_URL"
           alt="Site Views">
         <p>
-          <label for="img">Image Url:</label>
-          <input [(ngModel)]="movie.image_url" disabled type="text" class="form-control" placeholder="Image" aria-label="Image">
-        </p>
-        <p>
           <label for="id">ID:</label>
-          <input [(ngModel)]="movie.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
+          <input [(ngModel)]="movie.id" disabled type="text" class="form-control" placeholder="ID" aria-label="id">
         </p>
         <p>
           <label for="title">Title:</label>
-          <input [(ngModel)]="movie.title" type="text" class="form-control" placeholder="Title" aria-label="Title"
+          <input [(ngModel)]="movie.title" type="text" class="form-control" placeholder="Title" aria-label="title"
             aria-describedby="basic-addon1">
         </p>
         <p>
           <label for="genre">Genre:</label>
-          <input [(ngModel)]="movie.genre" type="text" class="form-control" placeholder="Genre" aria-label="Genre"
+          <input [(ngModel)]="movie.genre" type="text" class="form-control" placeholder="Genre" aria-label="genre"
             aria-describedby="basic-addon1">
         </p>
         <p>
           <label for="length">Length:</label>
           <input [(ngModel)]="movie.length" type="text" class="form-control" placeholder="Length"
-            aria-label="desc" aria-describedby="basic-addon1">
+            aria-label="length" aria-describedby="basic-addon1">
         </p>
         <p>
           <label for="publisher">Publisher</label>
-          <input [(ngModel)]="movie.publisher" type="text" class="form-control" placeholder="Publisher" aria-label="Publisher"
+          <input [(ngModel)]="movie.publisher" type="text" class="form-control" placeholder="Publisher" aria-label="publisher"
+            aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="poster_URL">Poster URL</label>
+          <input [(ngModel)]="movie.poster_URL" type="text" class="form-control" placeholder="Poster_URL" aria-label="Poster_URL"
             aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
-          <button mat-raised-button color="primary" class="pull-right" (click)="updateMovie(Movie)">Save</button>
-          <button mat-raised-button color="warn">Remove From Cart</button>
+          <button mat-raised-button color="primary" class="pull-right" (click)="updateMovie(movie)">Save</button>
+          <button mat-raised-button color="warn" (click)="removeMovie(movie, i)">Delete</button>
         </div>
       </mat-card-actions>
     </mat-card>

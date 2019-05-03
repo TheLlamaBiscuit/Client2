@@ -7,59 +7,65 @@
     <button mat-raised-button color="primary" (click)='createTheater()'>Add New Theater</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../ConcessionData/cd.component.html'" mat-raised-button color="primary">Add Concession</button>
+    <button routerLink="/concessions" routerLinkActive="active" mat-raised-button color="primary">Add Concession</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../MovieData/data.component.html'" mat-raised-button color="primary">Add Movie</button>
+    <button routerLink="/movie" routerLinkActive="active" mat-raised-button color="primary">Add Movie</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../EmployeeData/ed.component.html'" mat-raised-button color="primary">Add Employee</button>
+    <button routerLink="/employee" routerLinkActive="active" mat-raised-button color="primary">Add Employee</button>
   </li>
   <li class="nav-item">
-    <button onclick="window.location.href='../Welcome/welcome.component.html'" mat-raised-button color="primary">Checkout</button>
+    <button onclick="window.location.href='./src/app/Welcome/welcome.component.html'" mat-raised-button color="primary">Finish</button>
   </li>
 </ul>
 
 <div class="contact-grid">
   <div class="gallery-grid">
-    <mat-card class="example-card" *ngFor="let Theater of theaters; let i = index">
+    <mat-card class="example-card" *ngFor="let theater of theaters; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="'https://2p2bboli8d61fqhjiqzb8p1a-wpengine.netdna-ssl.com/wp-content/uploads/2016/12/488-gtb-main.jpg'"
+          [src]="theater.theater_URL"
           alt="Site Views">
         <p>
-          <label for="img">Image Url:</label>
-          <input [(ngModel)]="Movie.image_url" disabled type="text" class="form-control" placeholder="Image" aria-label="Image">
-        </p>
-        <p>
           <label for="id">ID:</label>
-          <input [(ngModel)]="Theater.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
+          <input [(ngModel)]="theater.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
         </p>
         <p>
-          <label for="Location">Location:</label>
-          <input [(ngModel)]="Theater.Location" type="text" class="form-control" placeholder="Location" aria-label="Location"
+          <label for="name">Theater Name:</label>
+          <input [(ngModel)]="theater.name" type="text" class="form-control" placeholder="Name" aria-label="name"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Type">Type:</label>
-          <input [(ngModel)]="Theater.Type" type="text" class="form-control" placeholder="Type" aria-label="Type"
+          <label for="location">Location:</label>
+          <input [(ngModel)]="theater.location" type="text" class="form-control" placeholder="Location" aria-label="location"
             aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="rooms">Number of rooms:</label>
-          <input [(ngModel)]="Theater.rooms" type="text" class="form-control" placeholder="Rooms"
-            aria-label="Rooms" aria-describedby="basic-addon1">
+          <label for="theater_type">Type:</label>
+          <input [(ngModel)]="theater.theater_type" type="text" class="form-control" placeholder="Theater Type" aria-label="theater_type"
+            aria-describedby="basic-addon1">
         </p>
         <p>
-          <label for="Employees">Number of employees</label>
-          <input [(ngModel)]="Theater.employees" type="text" class="form-control" placeholder="Employees" aria-label="Employees"
+          <label for="number_of_rooms">Number of Rooms:</label>
+          <input [(ngModel)]="theater.number_of_rooms" type="text" class="form-control" placeholder="Number of Rooms"
+            aria-label="number_of_rooms" aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="number_of_employees">Number of Employees</label>
+          <input [(ngModel)]="theater.number_of_employees" type="text" class="form-control" placeholder="Number of Employees" aria-label="number_of_employees"
+            aria-describedby="basic-addon1">
+        </p>
+        <p>
+          <label for="theater_URL">Theater Picture URL</label>
+          <input [(ngModel)]="theater.theater_URL" type="text" class="form-control" placeholder="Theater URL" aria-label="theater_URL"
             aria-describedby="basic-addon1">
         </p>
       </mat-card-content>
       <mat-card-actions>
         <div class="btn-group pull-right">
-          <button mat-raised-button color="primary" class="pull-right" (click)="updateTheater(Theater)">Save</button>
-          <button mat-raised-button color="warn">Remove From Cart</button>
+          <button mat-raised-button color="primary" class="pull-right" (click)="updateTheater(theater)">Save</button>
+          <button mat-raised-button color="warn" (click)="removeTheater(theater)">Delete</button>
         </div>
       </mat-card-actions>
     </mat-card>
