@@ -1,0 +1,129 @@
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+
+        body,
+        html {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .h3 {
+            font-weight: bold;
+        }
+
+        .r1 {
+            background-color: whitesmoke;
+        }
+
+        .r3 {
+            background-color: rgb(211, 39, 39);
+        }
+
+        .r2,
+        .r4,
+        .r6 {
+            background-color: white;
+        }
+
+        .r5 {
+            background-color: whitesmoke;
+        }
+
+        .r2 {
+            display: block;
+            height: 50px;
+        }
+
+        .r3 {
+            display: block;
+            height: 35px;
+        }
+
+        .r4,
+        .r5,
+        .r6 {
+            display: block;
+            height: 295px;
+        }
+
+        .r7 {
+            background-color: whitesmoke;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .main-container-grid {
+            display: grid;
+            grid-template-rows: 1fr 5fr 5fr 1fr;
+            height: 100%;
+        }
+
+        .top-button-nav {
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .top-button-nav>li {
+            display: inline-block;
+            padding: 1em 5em;
+            border: 2px solid black;
+            height: 2px;
+            vertical-align: middle;
+            line-height: 5px;
+        }
+
+        .top-button-nav>li>a {
+            margin-bottom: 5px;
+        }
+
+        .food-header {
+            text-align: left;
+            margin-left: 450px;
+            padding-top: 30px;
+        }
+
+        .food-description {
+            text-align: left;
+            margin-left: 445px;
+            padding-top: 10px;
+        }
+
+        .food-pic-container {
+            height: 100%;
+            float: left;
+            margin-right: 20px;
+        }
+
+        .food-pic-container>img {
+            display: block;
+            width: 220px;
+            height: 295px;
+            margin: auto;
+            margin-left: 50px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 25px;
+        }
+
+        .filter {
+            text-align: left;
+            margin-top: 25px;
+        }
+
+        .date {
+            text-align: right;
+            margin-top: -38px;
+            padding-right: 50px;
+        }
