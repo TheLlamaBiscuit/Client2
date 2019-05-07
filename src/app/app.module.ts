@@ -26,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'theater', component: TheaterComponent},
   { path: 'concessions', component: ConcessionsComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'home', component: HomeComponent},
 ];
 
 @NgModule({
