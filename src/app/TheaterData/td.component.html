@@ -25,12 +25,11 @@
     <mat-card class="example-card" *ngFor="let theater of theaters; let i = index">
       <mat-card-content>
         <img class="cover"
-          [src]="theater.theater_URL"
-          alt="Site Views">
-        <p>
+          [src]="theater.theater_URL" onerror="this.src='../../img/Default Image.jpg';">
+        <!-- <p>
           <label for="id">ID:</label>
           <input [(ngModel)]="theater.id" disabled type="text" class="form-control" placeholder="ID" aria-label="ID">
-        </p>
+        </p> -->
         <p>
           <label for="name">Theater Name:</label>
           <input [(ngModel)]="theater.name" type="text" class="form-control" placeholder="Name" aria-label="name"
